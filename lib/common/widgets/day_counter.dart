@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import '../constants/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../constants/colors.dart';
 
 class DayCounter extends StatelessWidget {
   final int count;
   const DayCounter({
-    super.key, required this.count,
+    super.key,
+    required this.count,
   });
 
   @override
@@ -18,23 +20,23 @@ class DayCounter extends StatelessWidget {
           borderRadius: BorderRadius.circular(32),
         ),
       ),
-      child:  Row(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-         const InkWell( 
-            //Icon Button was adding unnecessary padding and was not getting aligned
-            child: Icon(Icons.add, color: darkPinkColor)),
-          // IconButton(
-          //   constraints: BoxConstraints(maxHeight: 24,maxWidth: 24),
-          //   padding:EdgeInsets.all(0), icon: Icon(Icons.add, color: darkPinkColor),onPressed: (){}, ),
+          const Icon(
+            Icons.add,
+            color: darkPinkColor,
+          ),
           const SizedBox(width: 8),
-           Text(
+          Text(
             '$count',
-            style:const TextStyle(
-              color: darkPinkColor,
-              fontSize: 16,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
+            style: GoogleFonts.poppins(
+              height: 1,
+              textStyle: const TextStyle(
+                color: darkPinkColor,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ],
