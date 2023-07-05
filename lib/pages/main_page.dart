@@ -1,7 +1,6 @@
 import 'package:figma_to_flutter/constants/constants.dart';
 import 'package:figma_to_flutter/pages/components/bottom_bar.dart';
-import 'package:figma_to_flutter/pages/components/journals_list.dart';
-import 'package:figma_to_flutter/pages/components/journals_title.dart';
+import 'package:figma_to_flutter/pages/components/highlights_list.dart';
 import 'package:figma_to_flutter/pages/components/prompt_card.dart';
 import 'package:figma_to_flutter/constants/colors.dart';
 import 'package:figma_to_flutter/pages/components/title_bar.dart';
@@ -14,55 +13,49 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: backgroundColor,
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(80),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: ConstantSize.horizontalGapping,
-                vertical: ConstantSize.verticalGapping),
-            child: TitleBar(),
+    return const Scaffold(
+      backgroundColor: backgroundColor,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: ConstantSize.verticalGapping,
+            left: ConstantSize.horizontalGapping,
+            right: ConstantSize.horizontalGapping,
           ),
+          child: TitleBar(),
         ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: ConstantSize.horizontalGapping,
+      ),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //Expanded works fine but can't be const so using sizedBox for now
+            //But expanded gives proper spacing
+            // Expanded(
+            //   child: Container(),
+            // ),
+            StoriesWidget(
+              stories: stories,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //Expanded works fine but can't be const so using sizedBox for now
-                //But expanded gives proper spacing
-                Expanded(
-                  child: Container(),
-                ),
-                // SizedBox(height: ConstantSize.verticalGapping,),
-                const StoriesWidget(
-                  stories: stories,
-                ),
-                Expanded(
-                  child: Container(),
-                ),
-                // SizedBox(height: ConstantSize.verticalGapping,),
-                const JournalsTitle(),
-                Expanded(
-                  child: Container(),
-                ),
-                // SizedBox(height: ConstantSize.verticalGapping,),
-                const JournalsList(
-                  journals: journals,
-                ),
-                const PromptCard(),
-                Expanded(
-                  child: Container(),
-                ),
-                // SizedBox(height: ConstantSize.verticalGapping,),
-              ],
+            // Expanded(
+            //   child: Container(),
+            // ),
+            HighlightsList(
+              highlights: highlights,
             ),
-          ),
+            // Expanded(
+            //   child: Container(),
+            // ),
+            PromptCard(),
+            // Expanded(
+            //   child: Container(),
+            // ),
+          ],
         ),
-        bottomNavigationBar: const BottomBar());
+      ),
+      bottomNavigationBar: BottomBar(),
+    );
   }
 }
