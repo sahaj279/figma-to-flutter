@@ -1,52 +1,35 @@
-import 'package:figma_to_flutter/themes/colors.dart';
+import 'package:figma_to_flutter/constants/colors.dart';
+import 'package:figma_to_flutter/constants/constants.dart';
 import 'package:flutter/material.dart';
 
+
+
 class JournalsList extends StatelessWidget {
-  const JournalsList({super.key});
+  final List<List<dynamic>>journals;
+  const JournalsList({super.key, required this.journals});
+
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 285,
-      child: SingleChildScrollView(
+      height: 261,
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        child: Row( 
-          // shrinkWrap: true,
-          // scrollDirection: Axis.horizontal,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              alignment: Alignment.topLeft,
-              padding: const EdgeInsets.all(24).copyWith(right: 0),
-              height: 285,
-              // width: 100,
-              // color: Colors.yellow,
-              child: const JournalCard(
-                text: 'Daily Journal',
-                cardColor: cardYellowColor,
-                big:true
+        shrinkWrap: true,
+        itemCount: journals.length,
+        itemBuilder: (context, index) {
+          return Row(
+            crossAxisAlignment:journals[index][2]==true? CrossAxisAlignment.start:CrossAxisAlignment.center,
+            children: [
+              JournalCard(
+                text: journals[index][0] ,
+                cardColor: journals[index][1],
+                big:journals[index][2]
               ),
-            ),
-            Container(
-              // alignment: Alignment.topLeft,
-              padding: const EdgeInsets.all(24).copyWith(right: 0),
-              // height: 285,
-              // width: 100,
-              // color: Colors.yellow,
-              child: const JournalCard(cardColor: cardPurpleColor , text:'Daily Journal', big: false)
-            ),
-           Container(
-              // alignment: Alignment.topLeft,
-              padding: const EdgeInsets.all(24).copyWith(right: 0),
-              // height: 285,
-              // width: 100,
-              // color: Colors.yellow,,
-              child: const JournalCard(cardColor: darkPinkColor , text:'Daily Journal', big: false)
-            ),
-            const SizedBox(width: 24,)
-          ],
-        ),
-      ),
+                const SizedBox(width: ConstantSize.horizontalGapping,)
+            ],
+          );
+      },),
     );
   }
 }
