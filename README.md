@@ -1,16 +1,7 @@
-# figma_to_flutter
+# figma_to_flutter 💙
 
-A new Flutter project.
+A new Flutter project in which I'v tried to create this UI for a social media page in which I've created using various flutter features while writing clean code and having proper architecture.
 
-## Getting Started
+## Single Page UI
+![image](https://github.com/sahaj279/figma-to-flutter/assets/88133213/42b87065-fce0-42f6-8a83-b912e9b55fe2)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
